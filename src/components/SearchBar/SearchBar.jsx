@@ -11,12 +11,15 @@ function SearchBar({ onFormSubmit, onEmptyString }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit(text);
     if (text.trim() === "") {
       onEmptyString();
+      return;
+    } else {
+      onFormSubmit(text);
+      e.target.reset();
     }
-    e.target.reset();
   };
+
   return (
     <header className={css.header}>
       <form className={css.form} onSubmit={handleSubmit}>

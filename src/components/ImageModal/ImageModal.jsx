@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import css from "./ImageModal.module.css";
 
 const customStyles = {
   overlay: {
@@ -7,6 +8,7 @@ const customStyles = {
     left: 0,
     right: 0,
     bottom: 0,
+    border: "none",
     backgroundColor: "rgba(0, 0, 0, 0.7)",
   },
   content: {
@@ -23,7 +25,7 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-function ImageModal({ onClose, modalIsOpen, children }) {
+function ImageModal({ onClose, modalIsOpen, urlBig, alt }) {
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -32,7 +34,7 @@ function ImageModal({ onClose, modalIsOpen, children }) {
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
     >
-      {children}
+      <img src={urlBig} alt={alt} className={css.full} />
     </Modal>
   );
 }
